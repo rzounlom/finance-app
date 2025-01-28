@@ -1,3 +1,16 @@
+"use client";
+
+import { useClerk } from "@clerk/nextjs";
+
 export default function HomePage() {
-  return <div>App</div>;
+  const { signOut, user } = useClerk();
+
+  return (
+    <div>
+      Logged in as {user && user.emailAddresses[0].emailAddress} <br />
+      <button onClick={() => signOut({ redirectUrl: "/sign-in" })}>
+        Sign out
+      </button>
+    </div>
+  );
 }

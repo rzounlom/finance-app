@@ -16,6 +16,7 @@ export default function AuthLayout({
             <Image
               src="/Sidebar.png"
               alt="Sidebar"
+              sizes="100%"
               fill
               style={{ objectFit: "contain" }}
             />

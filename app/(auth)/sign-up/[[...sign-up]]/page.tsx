@@ -1,30 +1,50 @@
 "use client";
 
-import * as React from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
+import { ClerkAPIError } from "@clerk/types";
 import Link from "next/link";
+import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
 import { useRouter } from "next/navigation";
 import { useSignUp } from "@clerk/nextjs";
 
 export default function Page() {
   const { isLoaded, signUp, setActive } = useSignUp();
-  const [emailAddress, setEmailAddress] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [verifying, setVerifying] = React.useState(false);
-  const [code, setCode] = React.useState("");
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<ClerkAPIError[]>();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [verifying, setVerifying] = useState(false);
+  const [code, setCode] = useState("");
   const router = useRouter();
 
+  // Handle changes to the form inputs
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   // Handle submission of the sign-up form
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setErrors(undefined);
 
     if (!isLoaded) return;
 
     // Start the sign-up process using the email and password provided
     try {
       await signUp.create({
-        emailAddress,
-        password,
+        emailAddress: formData.email,
+        password: formData.password,
+        unsafeMetadata: {
+          name: formData.name,
+        },
       });
 
       // Send the user an email with the verification code
@@ -38,12 +58,15 @@ export default function Page() {
     } catch (err: any) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
+      if (isClerkAPIResponseError(err)) setErrors(err.errors);
       console.error(JSON.stringify(err, null, 2));
+    } finally {
+      setLoading(false);
     }
   };
 
   // Handle the submission of the verification form
-  const handleVerify = async (e: React.FormEvent) => {
+  const handleVerify = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!isLoaded) return;
@@ -116,6 +139,8 @@ export default function Page() {
                   type="text"
                   required
                   autoComplete="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   className="block w-full h-[45px] rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900 sm:text-sm/6"
                 />
               </div>
@@ -135,6 +160,8 @@ export default function Page() {
                   type="email"
                   required
                   autoComplete="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="block w-full h-[45px] rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900 sm:text-sm/6"
                 />
               </div>
@@ -156,20 +183,34 @@ export default function Page() {
                   type="password"
                   required
                   autoComplete="current-password"
+                  value={formData.password}
+                  onChange={handleInputChange}
                   className="block w-full h-[45px] rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900 sm:text-sm/6"
                 />
-                <span className="block mt-2 text-end text-sm/6 text-gray-500">
-                  Passwords must be a least 8 characters{" "}
-                </span>
+                {!errors && (
+                  <span className="block mt-2 text-end text-sm/6 text-gray-500">
+                    Passwords must be a least 8 characters{" "}
+                  </span>
+                )}
+                {errors && (
+                  <span className="block mt-2 text-center text-sm/6 text-red-500">
+                    {errors.reduce(
+                      (acc, error) => acc + " " + error.message,
+                      ""
+                    )}
+                  </span>
+                )}
               </div>
             </div>
 
             <div>
               <button
                 type="submit"
+                disabled={loading}
+                onClick={handleSubmit}
                 className="flex h-[53px] items-center w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
               >
-                Create Account
+                {loading ? "Creating Account..." : "Create Account"}
               </button>
             </div>
           </form>
