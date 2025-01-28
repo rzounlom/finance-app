@@ -158,6 +158,9 @@ export default function Page() {
                   autoComplete="current-password"
                   className="block w-full h-[45px] rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900 sm:text-sm/6"
                 />
+                <span className="block mt-2 text-end text-sm/6 text-gray-500">
+                  Passwords must be a least 8 characters{" "}
+                </span>
               </div>
             </div>
 
