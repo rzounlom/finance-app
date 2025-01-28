@@ -44,7 +44,7 @@ export default function SignInPage() {
 
   // Display a form to capture the user's email and password
   return (
-    <div className="w-full md:w-[59%] flex items-center">
+    <div className="w-[90%] md:w-[59%] flex items-center">
       <div className="w-full md:max-w-[560px] flex flex-1 flex-col justify-center p-[32px] shadow-md">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-2xl/9 font-bold tracking-tight text-gray-900">
