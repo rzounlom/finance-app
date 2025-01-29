@@ -3,6 +3,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
 import { ClerkAPIError } from "@clerk/types";
+import { InputOTPControlled } from "@/components/form/OTP";
 import Link from "next/link";
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
 import { useRouter } from "next/navigation";
@@ -68,6 +69,7 @@ export default function Page() {
   // Handle the submission of the verification form
   const handleVerify = async (e: FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!isLoaded) return;
 
@@ -90,26 +92,49 @@ export default function Page() {
     } catch (err: any) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
-      console.error("Error:", JSON.stringify(err, null, 2));
+      if (isClerkAPIResponseError(err)) setErrors(err.errors);
+      console.error(JSON.stringify(err, null, 2));
+    } finally {
+      setLoading(false);
     }
   };
 
   // Display the verification form to capture the OTP code
   if (verifying) {
     return (
-      <>
-        <h1>Verify your email</h1>
-        <form onSubmit={handleVerify}>
-          <label id="code">Enter your verification code</label>
-          <input
-            value={code}
-            id="code"
-            name="code"
-            onChange={(e) => setCode(e.target.value)}
-          />
-          <button type="submit">Verify</button>
-        </form>
-      </>
+      <div className="w-[90%] md:w-[59%] flex items-center">
+        <div className="w-full md:max-w-[500px] flex flex-1 flex-col justify-center p-[32px] shadow-md">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 className="text-2xl/9 font-bold tracking-tight text-gray-900 text-center">
+              Verify your email
+            </h2>
+            <p className="mt-4 text-center">
+              We sent a one-time passcode to {formData.email}
+            </p>
+          </div>
+          <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+            <InputOTPControlled
+              onChange={(value) => setCode(value)}
+              pin={code}
+            />
+            <div className="mt-4">
+              <button
+                type="submit"
+                onClick={handleVerify}
+                disabled={loading}
+                className="flex h-[53px] items-center w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+              >
+                {loading ? "Verifying OTP..." : "Verify"}
+              </button>
+            </div>
+            {errors && (
+              <span className="block mt-2 text-center text-sm/6 text-red-500">
+                {errors.reduce((acc, error) => acc + " " + error.message, "")}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
     );
   }
 
