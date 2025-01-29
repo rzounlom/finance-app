@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 
 import { ClerkAPIError } from "@clerk/types";
 import Link from "next/link";
+import { SubmitButton } from "@/components/form/Buttons";
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
 import { useRouter } from "next/navigation";
 import { useSignIn } from "@clerk/nextjs";
@@ -73,7 +74,7 @@ export default function SignInPage() {
         </div>
 
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
@@ -119,14 +120,13 @@ export default function SignInPage() {
             </div>
 
             <div>
-              <button
-                type="submit"
-                onClick={handleSubmit}
-                disabled={loading}
+              <SubmitButton
+                text="Sign In"
+                loading={loading}
+                size="lg"
                 className="flex w-full h-[53px] items-center justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-              >
-                {loading ? "Signing in..." : "Sign In"}
-              </button>
+              />
+
               {errors && (
                 <span className="block mt-2 text-center text-sm/6 text-red-500">
                   {errors.reduce((acc, error) => acc + " " + error.message, "")}

@@ -5,6 +5,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { ClerkAPIError } from "@clerk/types";
 import { InputOTPControlled } from "@/components/form/OTP";
 import Link from "next/link";
+import { SubmitButton } from "@/components/form/Buttons";
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
 import { useRouter } from "next/navigation";
 import { useSignUp } from "@clerk/nextjs";
@@ -102,7 +103,10 @@ export default function Page() {
   // Display the verification form to capture the OTP code
   if (verifying) {
     return (
-      <div className="w-[90%] md:w-[59%] flex items-center">
+      <form
+        onSubmit={handleVerify}
+        className="w-[90%] md:w-[59%] flex items-center"
+      >
         <div className="w-full md:max-w-[500px] flex flex-1 flex-col justify-center p-[32px] shadow-md">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="text-2xl/9 font-bold tracking-tight text-gray-900 text-center">
@@ -118,14 +122,12 @@ export default function Page() {
               pin={code}
             />
             <div className="mt-4">
-              <button
-                type="submit"
-                onClick={handleVerify}
-                disabled={loading}
+              <SubmitButton
+                text="Verify"
+                size="lg"
+                loading={loading}
                 className="flex h-[53px] items-center w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-              >
-                {loading ? "Verifying OTP..." : "Verify"}
-              </button>
+              />
             </div>
             {errors && (
               <span className="block mt-2 text-center text-sm/6 text-red-500">
@@ -134,7 +136,7 @@ export default function Page() {
             )}
           </div>
         </div>
-      </div>
+      </form>
     );
   }
 
@@ -149,7 +151,7 @@ export default function Page() {
         </div>
 
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="name"
@@ -227,16 +229,15 @@ export default function Page() {
                 )}
               </div>
             </div>
-
+            {/* CAPTCHA Widget */}
+            <div id="clerk-captcha"></div>
             <div>
-              <button
-                type="submit"
-                disabled={loading}
-                onClick={handleSubmit}
+              <SubmitButton
+                text="Create Account"
+                loading={loading}
+                size="lg"
                 className="flex h-[53px] items-center w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-              >
-                {loading ? "Creating Account..." : "Create Account"}
-              </button>
+              />
             </div>
           </form>
 
