@@ -53,7 +53,7 @@ export default function SignInPage() {
         // complete further steps.
         console.error(JSON.stringify(signInAttempt, null, 2));
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
       if (isClerkAPIResponseError(err)) setErrors(err.errors);
