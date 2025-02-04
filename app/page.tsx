@@ -1,16 +1,13 @@
-"use client";
+import Dashboard from "@/components/dashboard/Dashboard";
+import { Suspense } from "react";
 
-import { useClerk } from "@clerk/nextjs";
-
-export default function HomePage() {
-  const { signOut, user } = useClerk();
-
+export default async function HomePage() {
   return (
     <div>
-      Logged in as {user && user.emailAddresses[0].emailAddress} <br />
-      <button onClick={() => signOut({ redirectUrl: "/sign-in" })}>
-        Sign out
-      </button>
+      <h1>Homepage</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dashboard />
+      </Suspense>
     </div>
   );
 }
