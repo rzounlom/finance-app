@@ -1,11 +1,11 @@
 import Navbar from "../navbar/Navbar";
 import { createNewUser } from "@/utils/actions/auth";
 
-export default async function Dashboard() {
+export default async function Overview() {
   await createNewUser();
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1>Overview</h1>
       <Navbar />
     </div>
   );
