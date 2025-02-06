@@ -1,7 +1,12 @@
-import React from "react";
+import RecurringBills from "@/components/pages/recurring-bills/RecurringBills";
+import { Suspense } from "react";
 
 const RecurringBillsPage = () => {
-  return <div>BillsPage</div>;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <RecurringBills />
+    </Suspense>
+  );
 };
 
 export default RecurringBillsPage;
