@@ -3,14 +3,13 @@ import Image from "next/image";
 import { type MenuItemProps } from "./menuItems";
 
 const MobileMenuItem: FC<MenuItemProps> = ({
-  icon,
-  label,
+  menuItem: { icon, label, url },
   isActive,
   onClick,
 }) => {
   return (
     <div
-      onClick={() => onClick(label)}
+      onClick={() => onClick(url)}
       className={`flex flex-col w-[100%] items-center justify-center px-4 py-3 rounded-lg transition-all duration-250 ${
         isActive ? "bg-gray-100 text-gray-800" : "text-gray-400"
       } `}

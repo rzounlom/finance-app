@@ -1,25 +1,31 @@
 "use client";
 
-import React, { useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import MobileMenuItem from "./MobileMenuItem";
 import { menuItems } from "./menuItems";
 
-const MobileSidebar: React.FC = () => {
-  const [activeItem, setActiveItem] = useState("Overview");
+const MobileSidebar: FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [currentPath, setCurrentPath] = useState(pathname);
 
-  const handleMenuItemClick = (label: string) => {
-    setActiveItem(label);
+  const handleMenuItemClick = (url: string) => {
+    router.push(url);
   };
+
+  useEffect(() => {
+    setCurrentPath(pathname);
+  }, [pathname]);
 
   return (
     <nav className="fixed bottom-0 w-full bg-gray-900 text-gray-200 flex justify-between px-4 sm:px-14 py-2 lg:hidden rounded-t-xl">
       {menuItems.map((item) => (
         <MobileMenuItem
+          menuItem={item}
           key={item.label}
-          icon={item.icon}
-          label={item.label}
-          isActive={activeItem === item.label}
+          isActive={currentPath === item.url}
           onClick={handleMenuItemClick}
         />
       ))}

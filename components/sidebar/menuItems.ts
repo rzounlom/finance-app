@@ -1,4 +1,4 @@
-export const menuItems = [
+export const menuItems: MenuItem[] = [
   { label: "Overview", icon: "/house.svg", url: "/" },
   { label: "Transactions", icon: "/transactions.svg", url: "/transactions" },
   { label: "Budgets", icon: "/budgets.svg", url: "/budgets" },
@@ -7,9 +7,14 @@ export const menuItems = [
 ];
 
 export type MenuItemProps = {
-  icon: string;
-  label: string;
+  menuItem: MenuItem;
   minimized?: boolean;
   isActive?: boolean;
-  onClick: (label: string) => void;
+  onClick: (url: string) => void;
+};
+
+export type MenuItem = {
+  label: string;
+  icon: string;
+  url: string;
 };

@@ -3,15 +3,14 @@ import Image from "next/image";
 import { type MenuItemProps } from "./menuItems";
 
 const DeskTopMenuItem: FC<MenuItemProps> = ({
-  icon,
-  label,
+  menuItem: { icon, label, url },
   minimized,
   isActive,
   onClick,
 }) => {
   return (
     <div
-      onClick={() => onClick(label)}
+      onClick={() => onClick(url)}
       className={`flex w-[90%] items-center px-4 py-3 rounded-lg transition-all duration-250 ${
         isActive ? "bg-gray-100 text-gray-800" : "text-gray-400"
       } hover:bg-gray-100 hover:text-gray-800 cursor-pointer`}

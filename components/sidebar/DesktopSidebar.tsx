@@ -1,6 +1,7 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import DeskTopMenuItem from "./DesktopMenuItem";
 import Image from "next/image";
@@ -8,14 +9,20 @@ import { UserButton } from "@clerk/nextjs";
 import { menuItems } from "./menuItems";
 
 const DesktopSidebar: FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isMinimized, setIsMinimized] = useState(false);
-  const [activeItem, setActiveItem] = useState("Overview");
+  const [currentPath, setCurrentPath] = useState(pathname);
 
   const toggleSidebar = () => setIsMinimized(!isMinimized);
 
-  const handleMenuItemClick = (label: string) => {
-    setActiveItem(label);
+  const handleMenuItemClick = (url: string) => {
+    router.push(url);
   };
+
+  useEffect(() => {
+    setCurrentPath(pathname);
+  }, [pathname]);
 
   return (
     <aside
@@ -29,11 +36,10 @@ const DesktopSidebar: FC = () => {
       <nav className="flex flex-col flex-1 space-y-4">
         {menuItems.map((item) => (
           <DeskTopMenuItem
+            menuItem={item}
             key={item.label}
-            icon={item.icon}
-            label={item.label}
             minimized={isMinimized}
-            isActive={activeItem === item.label}
+            isActive={currentPath === item.url}
             onClick={handleMenuItemClick}
           />
         ))}
