@@ -2,12 +2,12 @@
 
 import { FC, useState } from "react";
 
+import DeskTopMenuItem from "./DesktopMenuItem";
 import Image from "next/image";
-import MenuItem from "./MenuItem";
 import { UserButton } from "@clerk/nextjs";
 import { menuItems } from "./menuItems";
 
-const Sidebar: FC = () => {
+const DesktopSidebar: FC = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [activeItem, setActiveItem] = useState("Overview");
 
@@ -19,7 +19,7 @@ const Sidebar: FC = () => {
 
   return (
     <aside
-      className={`hidden bg-gray-900 text-gray-200 lg:flex flex-col h-screen ${
+      className={`hidden bg-gray-900 text-gray-200 lg:flex flex-col h-screen rounded-r-xl ${
         isMinimized ? "w-16" : "w-64"
       } transition-width duration-300`}
     >
@@ -28,7 +28,7 @@ const Sidebar: FC = () => {
       </div>
       <nav className="flex flex-col flex-1 space-y-4">
         {menuItems.map((item) => (
-          <MenuItem
+          <DeskTopMenuItem
             key={item.label}
             icon={item.icon}
             label={item.label}
@@ -61,4 +61,4 @@ const Sidebar: FC = () => {
   );
 };
 
-export default Sidebar;
+export default DesktopSidebar;

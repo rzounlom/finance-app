@@ -3,8 +3,9 @@ import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import DesktopSidebar from "@/components/sidebar/DesktopSidebar";
 import type { Metadata } from "next";
-import Sidebar from "@/components/sidebar/Sidebar";
+import MobileSidebar from "@/components/sidebar/MobileSidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,8 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <div className="flex">
-            <Sidebar />
+            <DesktopSidebar />
+            <MobileSidebar />
             <main className="flex-1">{children}</main>
           </div>
         </body>

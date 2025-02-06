@@ -1,15 +1,8 @@
 import { FC } from "react";
 import Image from "next/image";
+import { type MenuItemProps } from "./menuItems";
 
-type MenuItemProps = {
-  icon: string;
-  label: string;
-  minimized: boolean;
-  isActive?: boolean;
-  onClick: (label: string) => void;
-};
-
-const MenuItem: FC<MenuItemProps> = ({
+const DeskTopMenuItem: FC<MenuItemProps> = ({
   icon,
   label,
   minimized,
@@ -29,4 +22,4 @@ const MenuItem: FC<MenuItemProps> = ({
   );
 };
 
-export default MenuItem;
+export default DeskTopMenuItem;
