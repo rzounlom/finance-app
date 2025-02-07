@@ -1,18 +1,13 @@
 import Image from "next/image";
 import React from "react";
+import { Transaction } from "./TransactionsList";
 
 type TransactionCardProps = {
-  name: string;
-  date: string;
-  amount: number;
-  avatar: string;
+  transaction: Transaction;
 };
 
 const TransactionCard: React.FC<TransactionCardProps> = ({
-  name,
-  date,
-  amount,
-  avatar,
+  transaction: { name, date, amount, avatar },
 }) => {
   return (
     <div className="flex items-center justify-between py-4 border-b border-gray-200 last:border-none">
@@ -27,20 +22,22 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
         />
         <div>
           <p className="text-sm font-semibold text-gray-900">{name}</p>
-          <p className="text-sm text-gray-500">{date}</p>
         </div>
       </div>
 
       {/* Right: Amount */}
-      <p
-        className={`text-sm font-semibold ${
-          amount > 0 ? "text-green-500" : "text-red-500"
-        }`}
-      >
-        {amount > 0
-          ? `+$${amount.toFixed(2)}`
-          : `-$${Math.abs(amount).toFixed(2)}`}
-      </p>
+      <div>
+        <p
+          className={`text-sm font-semibold ${
+            amount > 0 ? "text-money-green" : "text-gray-900"
+          }`}
+        >
+          {amount > 0
+            ? `+$${amount.toFixed(2)}`
+            : `-$${Math.abs(amount).toFixed(2)}`}
+        </p>
+        <p className="text-sm text-gray-500 mt-2">{date}</p>
+      </div>
     </div>
   );
 };

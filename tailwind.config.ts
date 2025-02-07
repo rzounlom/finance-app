@@ -77,6 +77,7 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         beige: "#F8F4F0",
+        "money-green": "#277C78",
       },
       borderRadius: {
         lg: "var(--radius)",
