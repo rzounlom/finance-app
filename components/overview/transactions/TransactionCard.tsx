@@ -8,7 +8,7 @@ type TransactionCardProps = {
   avatar: string;
 };
 
-const TransactionsCard: React.FC<TransactionCardProps> = ({
+const TransactionCard: React.FC<TransactionCardProps> = ({
   name,
   date,
   amount,
@@ -45,4 +45,4 @@ const TransactionsCard: React.FC<TransactionCardProps> = ({
   );
 };
 
-export default TransactionsCard;
+export default TransactionCard;

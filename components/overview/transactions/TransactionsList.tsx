@@ -1,5 +1,5 @@
 import React from "react";
-import TransactionsCard from "./TransactionsCard";
+import TransactionCard from "./TransactionCard";
 
 type Transaction = {
   name: string;
@@ -25,10 +25,10 @@ const TransactionsList: React.FC<TransactionsListProps> = ({
         </button>
       </div>
 
-      {/* Transaction Cards */}
+      {/* Transactions Cards */}
       <div className="divide-y divide-gray-200">
         {transactions.map((transaction, index) => (
-          <TransactionsCard
+          <TransactionCard
             key={index}
             name={transaction.name}
             date={transaction.date}

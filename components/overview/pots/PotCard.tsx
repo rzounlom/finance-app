@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Pot } from "./PotsList";
 
-type PotsCardProps = {
+type PotCardProps = {
   pot: Pot;
 };
 
@@ -11,7 +11,7 @@ export type PotsCardItem = {
   color: string;
 };
 
-const PotsCard: FC<PotsCardProps> = ({ pot }) => {
+const PotCard: FC<PotCardProps> = ({ pot }) => {
   return (
     <div className="flex items-center h-[55px] md:h-[43px]">
       <span
@@ -25,4 +25,4 @@ const PotsCard: FC<PotsCardProps> = ({ pot }) => {
   );
 };
 
-export default PotsCard;
+export default PotCard;

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import PotsCard from "./PotsCard";
+import PotCard from "./PotCard";
 
 export type Pot = {
   name: string;
@@ -49,7 +49,7 @@ const PotsList: FC<PotsListProps> = ({ pots }) => {
         {/* Individual Pots */}
         <div className="grid grid-cols-2 gap-4 md:flex-1 md:h-[110px]">
           {pots.map((pot) => (
-            <PotsCard key={pot.name} pot={pot} />
+            <PotCard key={pot.name} pot={pot} />
           ))}
         </div>
       </div>
