@@ -26,7 +26,7 @@ const DesktopSidebar: FC = () => {
 
   return (
     <aside
-      className={`hidden bg-gray-900 text-gray-200 lg:flex flex-col h-screen rounded-r-xl ${
+      className={`hidden bg-gray-900 text-gray-200 xl:flex flex-col h-screen rounded-r-xl ${
         isMinimized ? "w-16" : "w-64"
       } transition-width duration-300`}
     >
