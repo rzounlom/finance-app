@@ -4,8 +4,8 @@ import {
   OverViewCardType,
   type OverviewCardItem,
 } from "./overview/OverviewCard";
-import { OverviewCardList } from "./overview/OverviewCardList";
-import PotsCardList, { Pot } from "./pots/PotsCardList";
+import OverviewList from "./overview/OverviewCardList";
+import PotsList, { Pot } from "./pots/PotsList";
 
 const overviewCardItems: OverviewCardItem[] = [
   {
@@ -36,8 +36,8 @@ export default async function Overview() {
   return (
     <div className="w-full h-full overflow-y-auto lg:overflow-y-hidden pb-[40px]">
       <h1 className="text-3xl font-semibold">Overview</h1>
-      <OverviewCardList overviewCardItems={overviewCardItems} />
-      <PotsCardList pots={pots} />
+      <OverviewList overviewCardItems={overviewCardItems} />
+      <PotsList pots={pots} />
     </div>
   );
 }

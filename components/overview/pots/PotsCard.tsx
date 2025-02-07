@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Pot } from "./PotsCardList";
+import { Pot } from "./PotsList";
 
 type PotsCardProps = {
   pot: Pot;

@@ -9,11 +9,11 @@ export type Pot = {
   color: string;
 };
 
-type PotsCardListProps = {
+type PotsListProps = {
   pots: Pot[];
 };
 
-const PotsCardList: FC<PotsCardListProps> = ({ pots }) => {
+const PotsList: FC<PotsListProps> = ({ pots }) => {
   return (
     <div className="bg-white mt-[28px] rounded-xl p-6 shadow-md md:h-[218px] xl:max-w-[60%]">
       {/* Header */}
@@ -57,4 +57,4 @@ const PotsCardList: FC<PotsCardListProps> = ({ pots }) => {
   );
 };
 
-export default PotsCardList;
+export default PotsList;

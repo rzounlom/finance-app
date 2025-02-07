@@ -1,13 +1,11 @@
 import OverviewCard, { OverviewCardItem } from "./OverviewCard";
 import React, { FC } from "react";
 
-type OverviewCardListProps = {
+type OverviewListProps = {
   overviewCardItems: OverviewCardItem[];
 };
 
-export const OverviewCardList: FC<OverviewCardListProps> = ({
-  overviewCardItems,
-}) => {
+const OverviewList: FC<OverviewListProps> = ({ overviewCardItems }) => {
   return (
     <div className="mt-[28px] md:flex md:items-center md:gap-x-[20px]">
       {overviewCardItems.map((overviewCardItem) => (
@@ -19,3 +17,5 @@ export const OverviewCardList: FC<OverviewCardListProps> = ({
     </div>
   );
 };
+
+export default OverviewList;
