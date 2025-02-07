@@ -33,10 +33,12 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <div className="flex">
+          <div className="flex bg-beige">
             <DesktopSidebar />
             <MobileSidebar />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 items-center p-[40px] text-gray-900 h-screen pb-[110px] lg:pb-[40px]">
+              {children}
+            </main>
           </div>
         </body>
       </html>

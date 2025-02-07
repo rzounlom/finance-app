@@ -1,0 +1,11 @@
+.overview-card {
+  &:not(:first-child) {
+    margin-top: 12px;
+  }
+
+  @media (min-width: 768px) {
+    &:not(:first-child) {
+      margin-top: 0px;
+    }
+  }
+}
