@@ -3,9 +3,9 @@
 import {
   OverViewCardType,
   type OverviewCardItem,
-} from "./overview-section/OverviewCard";
-import { OverviewCardList } from "./overview-section/OverviewCardList";
-import PotsCardList, { Pot } from "./pots-section/PotsCardList";
+} from "./overview/OverviewCard";
+import { OverviewCardList } from "./overview/OverviewCardList";
+import PotsCardList, { Pot } from "./pots/PotsCardList";
 
 const overviewCardItems: OverviewCardItem[] = [
   {
