@@ -101,15 +101,20 @@ const Overview = async () => {
         <h1 className="text-3xl font-semibold">Overview</h1>
       </div>
       <div className="h-[calc(100%-60px)]">
-        <div className="h-full w-full grid grid-flow-col grid-rows-12 gap-6">
-          <div className="col-span-12 row-span-2 flex items-center justify-between">
+        <div className="h-full w-full flex flex-col gap-4 xl:grid xl:grid-flow-col xl:grid-rows-12 xl:gap-6">
+          {/* Row 1 */}
+          <div className="xl:col-span-12 xl:row-span-2 flex items-center justify-between">
             <OverviewList overviewCardItems={overviewCardItems} />
           </div>
-          <div className="col-span-9 row-span-10  grid grid-flow-col grid-rows-12 gap-6 ">
+
+          {/* Row 2: Main Content */}
+          <div className="flex flex-col gap-4 xl:col-span-9 xl:row-span-10 xl:grid xl:grid-flow-col xl:grid-rows-12 xl:gap-6">
             <PotsList pots={pots} />
             <TransactionsList transactions={transactions} />
           </div>
-          <div className="col-span-3 row-span-10 grid grid-flow-col grid-rows-12 gap-6 ">
+
+          {/* Row 3: Side Content */}
+          <div className="pb-[90px] md:pb-[131px] xl:pb-0 flex flex-col gap-4 xl:col-span-3 xl:row-span-10 xl:grid xl:grid-flow-col xl:grid-rows-12 xl:gap-6">
             <BudgetsList budgets={budgets} totalLimit={975} />
             <RecurringBillsList bills={bills} />
           </div>

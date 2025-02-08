@@ -14,9 +14,9 @@ type RecurringBillsListProps = {
 };
 const RecurringBillsList: FC<RecurringBillsListProps> = ({ bills }) => {
   return (
-    <div className="bg-white mt-[2%] xl:mt-0 rounded-xl p-6 shadow-md row-span-5">
+    <div className="bg-white xl:mt-0 rounded-xl p-6 shadow-md row-span-5">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-bold">Recurring Bills</h3>
         <Link
           href="recurring-bills"

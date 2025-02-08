@@ -15,7 +15,7 @@ type PotsListProps = {
 
 const PotsList: FC<PotsListProps> = ({ pots }) => {
   return (
-    <div className="bg-white mt-[2%] xl:mt-0 rounded-xl p-6 shadow-md row-span-4">
+    <div className="bg-white xl:mt-0 rounded-xl p-6 shadow-md row-span-4">
       {/* Header */}
       <div className="w-[165] md:w-[100%] flex justify-between items-center mb-6">
         <h3 className="text-lg font-bold">Pots</h3>
