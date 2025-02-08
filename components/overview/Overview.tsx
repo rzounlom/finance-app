@@ -1,5 +1,3 @@
-// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 import BudgetsList, { Budget } from "./budgets/BudgetsList";
 import {
   OverViewCardType,
@@ -7,6 +5,7 @@ import {
 } from "./overview/OverviewCard";
 import OverviewList from "./overview/OverviewList";
 import PotsList, { Pot } from "./pots/PotsList";
+import RecurringBillsList from "./recurring-bills/RecurringBillsList";
 import TransactionsList, { Transaction } from "./transactions/TransactionsList";
 
 const overviewCardItems: OverviewCardItem[] = [
@@ -89,6 +88,12 @@ const budgets: Budget[] = [
   },
 ];
 
+const bills = [
+  { name: "Paid Bills", amount: 190.0, color: "border-l-teal-500" },
+  { name: "Total Upcoming", amount: 194.98, color: "border-l-orange-400" },
+  { name: "Due Soon", amount: 59.98, color: "border-l-blue-400" },
+];
+
 const Overview = async () => {
   return (
     <div className="h-full w-full">
@@ -100,22 +105,13 @@ const Overview = async () => {
           <div className="col-span-12 row-span-2 flex items-center justify-between">
             <OverviewList overviewCardItems={overviewCardItems} />
           </div>
-          <div className="col-span-6 row-span-10  grid grid-flow-col grid-rows-12 gap-6 ">
+          <div className="col-span-9 row-span-10  grid grid-flow-col grid-rows-12 gap-6 ">
             <PotsList pots={pots} />
-            {/* <div className="bg-white mt-[2%] xl:mt-0 rounded-xl p-6 shadow-md row-span-8">
-              Transactions
-            </div> */}
             <TransactionsList transactions={transactions} />
           </div>
-          <div className="col-span-6 row-span-10 grid grid-flow-col grid-rows-12 gap-6 ">
-            {/* <div className="bg-white mt-[2%] xl:mt-0 rounded-xl p-6 shadow-md row-span-7">
-              Budgets
-            </div> */}
-
+          <div className="col-span-3 row-span-10 grid grid-flow-col grid-rows-12 gap-6 ">
             <BudgetsList budgets={budgets} totalLimit={975} />
-            <div className="bg-white mt-[2%] xl:mt-0 rounded-xl p-6 shadow-md row-span-5">
-              Recurring Bills
-            </div>
+            <RecurringBillsList bills={bills} />
           </div>
         </div>
       </div>
