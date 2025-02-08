@@ -36,7 +36,7 @@ export default function RootLayout({
           <div className="flex bg-beige">
             <DesktopSidebar />
             <MobileSidebar />
-            <main className="flex-1 items-center p-[40px] text-gray-900 h-screen pb-[110px] lg:pb-[40px]">
+            <main className="flex-1 items-center p-[2%] text-gray-900 h-screen pb-[50px] md:pb-[80px] lg:pb-0 xl:pb-[2%]">
               {children}
             </main>
           </div>

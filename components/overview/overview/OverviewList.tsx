@@ -7,7 +7,7 @@ type OverviewListProps = {
 
 const OverviewList: FC<OverviewListProps> = ({ overviewCardItems }) => {
   return (
-    <div className="mt-[28px] md:flex md:items-center md:gap-x-[20px]">
+    <div className="h-full w-full flex justify-between items-center">
       {overviewCardItems.map((overviewCardItem) => (
         <OverviewCard
           key={overviewCardItem.type}

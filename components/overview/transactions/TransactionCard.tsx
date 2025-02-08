@@ -10,7 +10,7 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
   transaction: { name, date, amount, avatar },
 }) => {
   return (
-    <div className="flex items-center justify-between py-4 border-b border-gray-200 last:border-none">
+    <div className="flex items-center justify-between py-3 border-b border-gray-200">
       {/* Left: Avatar and Name */}
       <div className="flex items-center space-x-4">
         <Image

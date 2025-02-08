@@ -20,7 +20,10 @@ const MobileSidebar: FC = () => {
   }, [pathname]);
 
   return (
-    <nav className="fixed bottom-0 w-full bg-gray-900 text-gray-200 flex justify-between px-4 sm:px-14 py-2 xl:hidden rounded-t-xl">
+    <nav
+      style={{ zIndex: 100 }}
+      className="fixed bottom-0 w-full bg-gray-900 text-gray-200 flex justify-between px-4 sm:px-14 py-2 xl:hidden rounded-t-xl"
+    >
       {menuItems.map((item) => (
         <MobileMenuItem
           menuItem={item}

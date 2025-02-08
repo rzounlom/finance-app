@@ -16,7 +16,7 @@ type TransactionsListProps = {
 
 const TransactionsList: FC<TransactionsListProps> = ({ transactions }) => {
   return (
-    <div className="bg-white rounded-xl p-6 shadow-md mt-[28px] lg:max-w-[60%]">
+    <div className="bg-white rounded-xl p-6 shadow-md mt-[2%] row-span-8">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-bold text-gray-900">Transactions</h3>

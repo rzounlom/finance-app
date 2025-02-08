@@ -23,7 +23,7 @@ const OverviewCard: FC<OverviewCardProps> = ({
   overviewItem: { type, title, amount },
 }) => {
   const overviewCardStyles = clsx(
-    "overview-card lg:mt-0 h-[111px] md:h-[119px] p-[20px] flex flex-col justify-between rounded-xl md:w-[calc(33.3333%-20px)] shadow-md",
+    "overview-card lg:mt-0 h-full max-h-[119px] p-[20px] flex flex-col justify-between rounded-xl md:w-[calc(33.3333%-15px)] shadow-md",
     {
       "bg-gray-900 text-white": type === "Current Balance",
       "bg-white text-gray-900": type !== "Current Balance",
