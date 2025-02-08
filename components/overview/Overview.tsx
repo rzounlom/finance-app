@@ -7,6 +7,7 @@ import OverviewList from "./overview/OverviewList";
 import PotsList, { Pot } from "./pots/PotsList";
 import RecurringBillsList from "./recurring-bills/RecurringBillsList";
 import TransactionsList, { Transaction } from "./transactions/TransactionsList";
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const overviewCardItems: OverviewCardItem[] = [
   {
@@ -95,6 +96,7 @@ const bills = [
 ];
 
 const Overview = async () => {
+  await delay(3000);
   return (
     <div className="h-full w-full">
       <div className="h-[60px]">
