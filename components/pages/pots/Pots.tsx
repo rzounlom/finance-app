@@ -1,7 +1,7 @@
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Pots = async () => {
-  await delay(3000);
+  await delay(5000);
   return <div>Pots Page</div>;
 };
 

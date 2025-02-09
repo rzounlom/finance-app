@@ -96,7 +96,7 @@ const bills = [
 ];
 
 const Overview = async () => {
-  await delay(3000);
+  await delay(5000);
   return (
     <div className="h-full w-full">
       <div className="h-[60px]">
