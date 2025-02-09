@@ -1,5 +1,5 @@
-import Overview from "@/components/overview/Overview";
-import OverviewSkeleton from "@/components/overview/OverviewSkeleton";
+import Overview from "@/components/pages/overview/Overview";
+import OverviewSkeleton from "@/components/pages/overview/OverviewSkeleton";
 import { Suspense } from "react";
 
 export default async function HomePage() {
