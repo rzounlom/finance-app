@@ -1,5 +1,7 @@
-import OverviewCard, { OverviewCardItem } from "./OverviewCard";
 import React, { FC } from "react";
+
+import OverviewCard from "./OverviewCard";
+import { OverviewCardItem } from "@/lib/types";
 
 type OverviewListProps = {
   overviewCardItems: OverviewCardItem[];

@@ -1,22 +1,11 @@
 import "./OverviewCard.scss";
 
 import { FC } from "react";
+import { OverviewCardItem } from "@/lib/types";
 import clsx from "clsx";
 
 type OverviewCardProps = {
   overviewItem: OverviewCardItem;
-};
-
-export enum OverViewCardType {
-  CurrentBalance = "Current Balance",
-  Income = "Income",
-  Expenses = "Expenses",
-}
-
-export type OverviewCardItem = {
-  type: OverViewCardType;
-  title: string;
-  amount: number;
 };
 
 const OverviewCard: FC<OverviewCardProps> = ({

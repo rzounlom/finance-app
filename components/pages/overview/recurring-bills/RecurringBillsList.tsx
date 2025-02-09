@@ -1,13 +1,8 @@
+import { Bill } from "@/lib/types";
 import BillCard from "./BillCard";
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-export type Bill = {
-  name: string;
-  amount: number;
-  color: string; // Tailwind CSS class for the left border color
-};
 
 type RecurringBillsListProps = {
   bills: Bill[];

@@ -1,14 +1,8 @@
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Transaction } from "@/lib/types";
 import TransactionCard from "./TransactionCard";
-
-export type Transaction = {
-  name: string;
-  date: string;
-  amount: number;
-  avatar: string;
-};
 
 type TransactionsListProps = {
   transactions: Transaction[];

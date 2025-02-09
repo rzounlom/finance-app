@@ -1,12 +1,18 @@
-import BudgetsList, { Budget } from "./budgets/BudgetsList";
 import {
+  Bill,
+  Budget,
   OverViewCardType,
-  type OverviewCardItem,
-} from "./overview/OverviewCard";
+  OverviewCardItem,
+  Pot,
+  Transaction,
+} from "@/lib/types";
+
+import BudgetsList from "./budgets/BudgetsList";
 import OverviewList from "./overview/OverviewList";
-import PotsList, { Pot } from "./pots/PotsList";
+import PotsList from "./pots/PotsList";
 import RecurringBillsList from "./recurring-bills/RecurringBillsList";
-import TransactionsList, { Transaction } from "./transactions/TransactionsList";
+import TransactionsList from "./transactions/TransactionsList";
+
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const overviewCardItems: OverviewCardItem[] = [
@@ -89,7 +95,7 @@ const budgets: Budget[] = [
   },
 ];
 
-const bills = [
+const bills: Bill[] = [
   { name: "Paid Bills", amount: 190.0, color: "border-l-teal-500" },
   { name: "Total Upcoming", amount: 194.98, color: "border-l-orange-400" },
   { name: "Due Soon", amount: 59.98, color: "border-l-blue-400" },

@@ -2,6 +2,7 @@
 
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from "chart.js";
 
+import { Budget } from "@/lib/types";
 import BudgetCard from "./BudgetCard";
 import { Doughnut } from "react-chartjs-2";
 import { FC } from "react";
@@ -9,13 +10,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-export type Budget = {
-  name: string;
-  amount: number;
-  color: string;
-  colorHash: string;
-};
 
 type BudgetsListProps = {
   budgets: Budget[];

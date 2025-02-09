@@ -1,13 +1,8 @@
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Pot } from "@/lib/types";
 import PotCard from "./PotCard";
-
-export type Pot = {
-  name: string;
-  amount: number;
-  color: string;
-};
 
 type PotsListProps = {
   pots: Pot[];

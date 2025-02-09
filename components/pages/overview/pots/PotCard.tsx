@@ -1,14 +1,8 @@
 import { FC } from "react";
-import { Pot } from "./PotsList";
+import { Pot } from "@/lib/types";
 
 type PotCardProps = {
   pot: Pot;
-};
-
-export type PotsCardItem = {
-  name: string;
-  amount: number;
-  color: string;
 };
 
 const PotCard: FC<PotCardProps> = ({ pot }) => {
