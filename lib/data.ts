@@ -5,6 +5,7 @@ import {
   OverviewCardItem,
   Pot,
   Transaction,
+  TransactionCategory,
 } from "./types";
 
 export const overviewCardItems: OverviewCardItem[] = [
@@ -38,30 +39,35 @@ export const transactions: Transaction[] = [
     date: "19 Aug 2024",
     amount: 75.5,
     avatar: "https://avatar.iran.liara.run/public",
+    category: TransactionCategory.DiningOut,
   },
   {
     name: "Savory Bites Bistro",
     date: "19 Aug 2024",
     amount: -55.5,
     avatar: "https://avatar.iran.liara.run/public",
+    category: TransactionCategory.General,
   },
   {
     name: "Daniel Carter",
     date: "18 Aug 2024",
     amount: -42.3,
     avatar: "https://avatar.iran.liara.run/public",
+    category: TransactionCategory.Lifestyle,
   },
   {
     name: "Sun Park",
     date: "17 Aug 2024",
     amount: 120,
     avatar: "https://avatar.iran.liara.run/public",
+    category: TransactionCategory.Transportation,
   },
   {
     name: "Urban Services Hub",
     date: "17 Aug 2024",
     amount: -65,
     avatar: "https://avatar.iran.liara.run/public",
+    category: TransactionCategory.Bills,
   },
 ];
 

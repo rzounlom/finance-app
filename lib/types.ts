@@ -38,7 +38,18 @@ export type Transaction = {
   date: string;
   amount: number;
   avatar: string;
+  category: string;
 };
+
+export enum TransactionCategory {
+  Entertainment = "Entertainment",
+  DiningOut = "Dining Out",
+  Bills = "Bills",
+  PersonalCare = "Personal Care",
+  General = "General",
+  Lifestyle = "Lifestyle",
+  Transportation = "Transportation",
+}
 
 //Recurring Bills Types
 export type Bill = {
