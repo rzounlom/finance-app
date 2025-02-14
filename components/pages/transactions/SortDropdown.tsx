@@ -16,22 +16,30 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ sortBy, setSortBy }) => {
     <div className="relative md:w-[113px] h-[45px] ">
       {/* Select Input */}
       <button
-        className="w-full h-[45px] flex items-center justify-center text-left p-2 border border-gray-300 rounded-lg focus:outline-none"
+        className="w-full h-full flex items-center justify-center text-left p-2 md:border md:border-gray-300 md:rounded-lg focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {sortBy}
+        <span className="hidden md:block">{sortBy}</span>
         <Image
-          className="ml-4"
+          className="hidden md:block ml-4"
           src="/arrow-down.svg"
           height={16}
           width={16}
-          alt="arrow down"
+          alt="arrow down icon"
+        />
+
+        <Image
+          className="md:hidden ml-4"
+          src="/sort.svg"
+          height={20}
+          width={20}
+          alt="sort icon"
         />
       </button>
 
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute z-10 bg-white border border-gray-300 rounded-lg mt-1 w-full shadow-lg">
+        <div className="min-w-[95px] absolute z-10 bg-white border border-gray-300 rounded-lg mt-1 w-full shadow-lg">
           {options.map((option) => (
             <button
               key={option}

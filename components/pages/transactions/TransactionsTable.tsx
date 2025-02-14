@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
 import { Transaction, TransactionCategory } from "@/lib/types";
 
 import CategoryDropdown from "./CategoryDropdown";
-import Image from "next/image";
+import DesktopTransactionRow from "./DesktopTransactionRow";
+import MobileTransactionRow from "./MobileTransactionRow";
 import { Search } from "lucide-react"; // Example: Using lucide-react icons
 import SortDropdown from "./SortDropdown";
+import useScreenSize from "@/hooks/useScreenSize";
+import { useState } from "react";
 
 type TransactionsTableProps = {
   transactions: Transaction[];
@@ -15,12 +17,13 @@ type TransactionsTableProps = {
 const TransactionsTable: React.FC<TransactionsTableProps> = ({
   transactions,
 }) => {
+  const { height } = useScreenSize();
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("Latest");
   const [categoryFilter, setCategoryFilter] = useState("All Transactions");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const transactionsPerPage = 10;
+  const transactionsPerPage = height <= 1024 ? 9 : 10;
 
   const categories = [
     "All Transactions",
@@ -69,10 +72,10 @@ const TransactionsTable: React.FC<TransactionsTableProps> = ({
   );
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-md">
+    <div className="bg-white rounded-xl p-6 shadow-md overflow-auto mb-[50px] md:mb-0">
       {/* Search and Filters */}
-      <div className="relative flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
-        <div className="relative w-[80%] max-w-[320px]">
+      <div className="relative flex justify-between items-center mb-4 gap-4">
+        <div className="relative w-[80%] md:w-[33%] max-w-[320px]">
           <input
             type="text"
             placeholder="Search transaction"
@@ -89,12 +92,16 @@ const TransactionsTable: React.FC<TransactionsTableProps> = ({
         <div className="flex items-center gap-4">
           {/* Sort By Dropdown */}
           <div className="relative flex items-center">
-            <label className="mr-2 text-gray-600">Sort by</label>
+            <label className="hidden md:block mr-2 text-gray-600">
+              Sort by
+            </label>
             <SortDropdown sortBy={sortBy} setSortBy={setSortBy} />
           </div>
           {/* Category Dropdown */}
           <div className="relative flex items-center">
-            <label className="mr-2 text-gray-600">Category</label>
+            <label className="hidden md:block mr-2 text-gray-600">
+              Category
+            </label>
             <CategoryDropdown
               categories={categories}
               setCategory={setCategoryFilter}
@@ -104,51 +111,40 @@ const TransactionsTable: React.FC<TransactionsTableProps> = ({
         </div>
       </div>
 
-      {/* Table */}
-      <div className="w-full">
+      {/* Desktop Table View */}
+      <div className="hidden md:block overflow-x-auto flex-grow">
         <table className="table-auto w-full border-collapse border border-gray-200">
-          <thead className="hidden md:block w-full">
-            <tr className="bg-gray-100 text-gray-600 text-left">
-              <th className="p-3">Recipient / Sender</th>
-              <th className="p-3">Category</th>
-              <th className="p-3">Transaction Date</th>
-              <th className="p-3">Amount</th>
+          <thead className="sticky top-0 bg-gray-100 text-gray-600 shadow">
+            <tr>
+              <th className="p-2 text-left w-[40%]">Recipient / Sender</th>
+              <th className="p-2 text-left w-[20%]">Category</th>
+              <th className="p-2 text-left w-[20%]">Transaction Date</th>
+              <th className="p-2 text-left w-[20%]">Amount</th>
             </tr>
           </thead>
           <tbody>
             {currentTransactions.map((transaction, index) => (
-              <tr
-                key={index}
-                className="border-t border-gray-200 hover:bg-gray-50"
-              >
-                <td className="p-3 flex items-center gap-3">
-                  <Image
-                    src={transaction.avatar}
-                    alt={transaction.name}
-                    width={40}
-                    height={40}
-                    className="rounded-full"
-                  />
-                  <span>{transaction.name}</span>
-                </td>
-                <td className="p-3">{transaction.category}</td>
-                <td className="p-3">{transaction.date}</td>
-                <td
-                  className={`p-3 ${
-                    transaction.amount > 0 ? "text-teal-500" : "text-red-500"
-                  }`}
-                >
-                  {transaction.amount > 0 ? "+" : ""}$
-                  {Math.abs(transaction.amount).toFixed(2)}
-                </td>
-              </tr>
+              <DesktopTransactionRow
+                key={`desktop-transaction-${transaction?.id}-${index}`}
+                transaction={transaction}
+              />
             ))}
           </tbody>
         </table>
       </div>
 
+      {/* Mobile Row View */}
+      <div className="md:hidden h-[80%] overflow-y-auto">
+        {currentTransactions.map((transaction, idx) => (
+          <MobileTransactionRow
+            key={`mobile-transaction-${transaction?.id}-${idx}`}
+            transaction={transaction}
+          />
+        ))}
+      </div>
+
       {/* Pagination */}
-      <div className="flex justify-between items-center mt-4">
+      <div className="flex justify-between items-center mt-2 lg:mt-4">
         <button
           className="px-4 py-2 bg-gray-200 text-gray-600 rounded-lg hover:bg-gray-300"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

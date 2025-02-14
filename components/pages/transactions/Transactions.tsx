@@ -11,7 +11,7 @@ const Transactions = async () => {
         <div className="col-span-12 row-span-1">
           <h1 className="text-3xl font-semibold">Transactions</h1>
         </div>
-        <div className="h-[calc(100%-60px)] col-span-12 row-span-11">
+        <div className="h-[calc(100%-60px)] col-span-12 row-span-11 pb-[100px] md:pb-[131px] xl:pb-0">
           <TransactionsTable
             transactions={[...transactions, ...transactions, ...transactions]}
           />

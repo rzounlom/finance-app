@@ -19,22 +19,30 @@ const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
     <div className="relative md:w-[177px] h-[45px]">
       {/* Select Input */}
       <button
-        className="flex items-center justify-center w-full h-full text-left p-2 border border-gray-300 rounded-lg focus:outline-none"
+        className="flex items-center justify-center w-full h-full text-left p-2 md:border md:border-gray-300 md:rounded-lg focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {category}{" "}
+        <span className="hidden md:block">{category}</span>
         <Image
-          className="ml-4"
+          className="hidden md:block ml-4"
           src="/arrow-down.svg"
           height={16}
           width={16}
-          alt="arrow down"
+          alt="arrow down icon"
+        />
+
+        <Image
+          className="md:hidden ml-4"
+          src="/filter.svg"
+          height={20}
+          width={20}
+          alt="filter icon"
         />
       </button>
 
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute z-10 bg-white border border-gray-300 rounded-lg mt-1 w-full shadow-lg">
+        <div className="min-w-[160px] absolute z-10 bg-white border border-gray-300 rounded-lg mt-1 left-[-100px] md:left-0 w-full shadow-lg">
           {categories.map((option) => (
             <button
               key={option}
