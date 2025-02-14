@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Transaction } from "./TransactionsList";
+import { Transaction } from "@/lib/types";
 
 type TransactionCardProps = {
   transaction: Transaction;

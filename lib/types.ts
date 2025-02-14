@@ -1,5 +1,6 @@
 // Budget Types
 export type Budget = {
+  id: string;
   name: string;
   amount: number;
   color: string;
@@ -21,12 +22,14 @@ export type OverviewCardItem = {
 
 //Pot Types
 export type Pot = {
+  id: string;
   name: string;
   amount: number;
   color: string;
 };
 
 export type PotsCardItem = {
+  id: string;
   name: string;
   amount: number;
   color: string;
@@ -34,6 +37,7 @@ export type PotsCardItem = {
 
 //Transaction Types
 export type Transaction = {
+  id: string;
   name: string;
   date: string;
   amount: number;
@@ -53,6 +57,7 @@ export enum TransactionCategory {
 
 //Recurring Bills Types
 export type Bill = {
+  id: string;
   name: string;
   amount: number;
   color: string; // Tailwind CSS class for the left border color

@@ -1,4 +1,4 @@
-import { Budget } from "./BudgetsList";
+import { Budget } from "@/lib/types";
 import { FC } from "react";
 
 type BudgetCardProps = {

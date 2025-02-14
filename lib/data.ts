@@ -8,6 +8,8 @@ import {
   TransactionCategory,
 } from "./types";
 
+import { v4 as uuidv4 } from "uuid";
+
 export const overviewCardItems: OverviewCardItem[] = [
   {
     type: OverViewCardType.CurrentBalance,
@@ -27,14 +29,15 @@ export const overviewCardItems: OverviewCardItem[] = [
 ];
 
 export const pots: Pot[] = [
-  { name: "Savings", amount: 159, color: "bg-green-500" },
-  { name: "Gift", amount: 40, color: "bg-blue-400" },
-  { name: "Concert Ticket", amount: 110, color: "bg-purple-500" },
-  { name: "New Laptop", amount: 10, color: "bg-orange-400" },
+  { id: uuidv4(), name: "Savings", amount: 159, color: "bg-green-500" },
+  { id: uuidv4(), name: "Gift", amount: 40, color: "bg-blue-400" },
+  { id: uuidv4(), name: "Concert Ticket", amount: 110, color: "bg-purple-500" },
+  { id: uuidv4(), name: "New Laptop", amount: 10, color: "bg-orange-400" },
 ];
 
 export const transactions: Transaction[] = [
   {
+    id: uuidv4(),
     name: "Emma Richardson",
     date: "19 Aug 2024",
     amount: 75.5,
@@ -42,6 +45,7 @@ export const transactions: Transaction[] = [
     category: TransactionCategory.DiningOut,
   },
   {
+    id: uuidv4(),
     name: "Savory Bites Bistro",
     date: "19 Aug 2024",
     amount: -55.5,
@@ -49,6 +53,7 @@ export const transactions: Transaction[] = [
     category: TransactionCategory.General,
   },
   {
+    id: uuidv4(),
     name: "Daniel Carter",
     date: "18 Aug 2024",
     amount: -42.3,
@@ -56,6 +61,7 @@ export const transactions: Transaction[] = [
     category: TransactionCategory.Lifestyle,
   },
   {
+    id: uuidv4(),
     name: "Sun Park",
     date: "17 Aug 2024",
     amount: 120,
@@ -63,6 +69,7 @@ export const transactions: Transaction[] = [
     category: TransactionCategory.Transportation,
   },
   {
+    id: uuidv4(),
     name: "Urban Services Hub",
     date: "17 Aug 2024",
     amount: -65,
@@ -73,19 +80,28 @@ export const transactions: Transaction[] = [
 
 export const budgets: Budget[] = [
   {
+    id: uuidv4(),
     name: "Entertainment",
     amount: 50,
     color: "bg-orange-400",
     colorHash: "#fb923c",
   },
   {
+    id: uuidv4(),
     name: "Dining Out",
     amount: 75,
     color: "bg-blue-400",
     colorHash: "#60a5fa",
   },
-  { name: "Bills", amount: 400, color: "bg-teal-500", colorHash: "#14b8a6" },
   {
+    id: uuidv4(),
+    name: "Bills",
+    amount: 400,
+    color: "bg-teal-500",
+    colorHash: "#14b8a6",
+  },
+  {
+    id: uuidv4(),
     name: "Personal Care",
     amount: 100,
     color: "bg-purple-500",
@@ -94,7 +110,17 @@ export const budgets: Budget[] = [
 ];
 
 export const bills: Bill[] = [
-  { name: "Paid Bills", amount: 190.0, color: "border-l-teal-500" },
-  { name: "Total Upcoming", amount: 194.98, color: "border-l-orange-400" },
-  { name: "Due Soon", amount: 59.98, color: "border-l-blue-400" },
+  {
+    id: uuidv4(),
+    name: "Paid Bills",
+    amount: 190.0,
+    color: "border-l-teal-500",
+  },
+  {
+    id: uuidv4(),
+    name: "Total Upcoming",
+    amount: 194.98,
+    color: "border-l-orange-400",
+  },
+  { id: uuidv4(), name: "Due Soon", amount: 59.98, color: "border-l-blue-400" },
 ];
