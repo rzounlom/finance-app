@@ -1,9 +1,18 @@
+import {
+  ArrowsDownUp,
+  ChartDonut,
+  House,
+  IconProps,
+  Receipt,
+  TipJar,
+} from "@phosphor-icons/react";
+
 export const menuItems: MenuItem[] = [
-  { label: "Overview", icon: "/house.svg", url: "/" },
-  { label: "Transactions", icon: "/transactions.svg", url: "/transactions" },
-  { label: "Budgets", icon: "/budgets.svg", url: "/budgets" },
-  { label: "Pots", icon: "/pots.svg", url: "/pots" },
-  { label: "Recurring bills", icon: "/bills.svg", url: "/recurring-bills" },
+  { label: "Overview", icon: House, url: "/" },
+  { label: "Transactions", icon: ArrowsDownUp, url: "/transactions" },
+  { label: "Budgets", icon: ChartDonut, url: "/budgets" },
+  { label: "Pots", icon: TipJar, url: "/pots" },
+  { label: "Recurring bills", icon: Receipt, url: "/recurring-bills" },
 ];
 
 export type MenuItemProps = {
@@ -15,6 +24,6 @@ export type MenuItemProps = {
 
 export type MenuItem = {
   label: string;
-  icon: string;
+  icon: React.ComponentType<IconProps>;
   url: string;
 };
