@@ -33,7 +33,7 @@ const SpendingSummary: FC<SpendingSummaryProps> = ({ budgets, totalLimit }) => {
     ],
   };
   return (
-    <div className="flex flex-col md:flex-row gap-6">
+    <div className="flex flex-col md:flex-row xl:flex-col gap-6">
       {/* Chart with Centered Text */}
       <div className="flex justify-center items-center md:w-[45%]">
         <div className="relative w-40 h-40 mb-4 md:mb-0 md:w-56 md:h-56">
