@@ -1,9 +1,9 @@
 import RecurringBillsContainer from "./RecurringBillsContainer";
-// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 import { bills } from "@/lib/data";
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const RecurringBills = async () => {
-  // await delay(5000);
+  await delay(5000);
   return (
     <div className="h-full bg-beige overflow-auto">
       <div className="h-[60px]">
