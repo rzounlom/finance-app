@@ -29,10 +29,10 @@ export const overviewCardItems: OverviewCardItem[] = [
 ];
 
 export const pots: Pot[] = [
-  { id: uuidv4(), name: "Savings", amount: 159, color: "bg-green-500" },
-  { id: uuidv4(), name: "Gift", amount: 40, color: "bg-blue-400" },
-  { id: uuidv4(), name: "Concert Ticket", amount: 110, color: "bg-purple-500" },
-  { id: uuidv4(), name: "New Laptop", amount: 10, color: "bg-orange-400" },
+  { id: uuidv4(), name: "Savings", amount: 159, color: "green" },
+  { id: uuidv4(), name: "Gift", amount: 40, color: "blue" },
+  { id: uuidv4(), name: "Concert Ticket", amount: 110, color: "purple" },
+  { id: uuidv4(), name: "New Laptop", amount: 10, color: "orange" },
 ];
 
 export const transactions: Transaction[] = [

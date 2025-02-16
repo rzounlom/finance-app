@@ -7,7 +7,12 @@ type PotCardProps = {
 };
 
 const PotCard: FC<PotCardProps> = ({ pot }) => {
-  const cardStyles = clsx(`block w-1 h-full rounded-full ${pot?.color} mr-4`);
+  const cardStyles = clsx(`block w-1 h-full rounded-full mr-4`, {
+    "bg-orange-400": pot?.color === "orange",
+    "bg-blue-400": pot?.color === "blue",
+    "bg-green-500": pot?.color === "green",
+    "bg-purple-500": pot?.color === "purple",
+  });
 
   return (
     <div className="flex items-center h-[55px] md:h-[43px]">
