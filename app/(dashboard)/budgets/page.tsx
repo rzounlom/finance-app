@@ -1,9 +1,10 @@
 import Budgets from "@/components/pages/budgets/Budgets";
+import BudgetsSkeleton from "@/components/pages/budgets/BudgetsSkeleton";
 import { Suspense } from "react";
 
 const BudgetsPage = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<BudgetsSkeleton />}>
       <Budgets />
     </Suspense>
   );
