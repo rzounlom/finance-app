@@ -61,4 +61,6 @@ export type Bill = {
   name: string;
   amount: number;
   color: string; // Tailwind CSS class for the left border color
+  status: "Paid" | "Upcoming" | "Due Soon";
+  dueDate: string;
 };
