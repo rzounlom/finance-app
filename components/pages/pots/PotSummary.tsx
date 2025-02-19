@@ -17,7 +17,7 @@ const PotSummary: FC<PotSummaryProps> = ({ pot }) => {
   });
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-md w-full h-[317px] lg:h-[303px] lg:max-w-[49%]">
+    <div className="bg-white p-6 rounded-xl shadow-md w-full h-[317px] lg:h-[303px] lg:max-w-[48%] xl:max-w-[49%]">
       {/* Header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">

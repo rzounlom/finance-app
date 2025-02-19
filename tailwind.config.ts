@@ -78,6 +78,7 @@ export default {
         },
         beige: "#F8F4F0",
         "money-green": "#277C78",
+        "money-red": "#C94736",
       },
       borderRadius: {
         lg: "var(--radius)",
